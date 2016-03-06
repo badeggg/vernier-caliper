@@ -1,0 +1,4 @@
+﻿/*
+* @badeggg
+* config.js  
+*/
