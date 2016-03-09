@@ -12,17 +12,16 @@ define(function(){
     dragElements.push( document.getElementById('vernier1') );
     triggerDragElement.addEventListener('mousedown', startDrag, false);
     triggerDragElement.addEventListener('mouseleave', endDrag, false);
-    document.getElementsByTagName('main')[0].style.background = '#D1DCDC';//////////////
     
     var mouseStartX = 0;
     var lastX = 0;
-    var dragingFlag = false; //正在拖动
-    window.dragingFlag = dragingFlag; ////////////////////////////
+    var dragingFlag = false;
     function startDrag(event){
       event.stopPropagation();
       event.preventDefault();
       dragingFlag = true;
       mouseStartX = event.pageX;
+      triggerDragElement.style.cursor = '-webkit-grabbing';
       triggerDragElement.addEventListener('mousemove', draging, false);
       triggerDragElement.addEventListener('mouseup', endDrag, false);
     }
@@ -40,6 +39,7 @@ define(function(){
       }
       dragingFlag = false;
       lastX = parseInt(dragElements[0].style.left);
+      triggerDragElement.style.cursor = '-webkit-grab';
       triggerDragElement.removeEventListener('mousemove', draging, false);
       triggerDragElement.removeEventListener('mouseup', endDrag, false);
     }

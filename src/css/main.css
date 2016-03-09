@@ -7,7 +7,6 @@ main{
   height: 600px;
   position: relative;
   margin: 0 auto;
-  font-family: '宋体';
 }
 .layer{
   position: absolute;
@@ -19,6 +18,7 @@ main{
 }
 #vernier1{
   background-image: url('../../src/img/vernier1.png');
+  cursor: -webkit-grab;
 }
 #main{
   background-image: url('../../src/img/main.png');
@@ -28,4 +28,23 @@ main{
 }
 #vernier2{
   background-image: url('../../src/img/vernier2.png');
+}
+#magnifier{
+  position: absolute;
+  margin: 0px 20px 0 0;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 0 13px 16px #828C82 inset;
+  cursor: pointer;
+  z-index: 10;
+  background: white;
+}
+#canvas{
+  display: block;
+}
+#magnifier-image{
+  position: absolute;
+  top: 0;
+  left: 0;
 }
