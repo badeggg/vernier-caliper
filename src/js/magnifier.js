@@ -10,12 +10,14 @@ define(function(){
   var mouseStartY = 0;
   var lastX = parseInt( magnifier.style.left );
   var lastY = parseInt( magnifier.style.top );
+  var slideLeft = parseInt( document.getElementById('deep').style.left ); //游标尺滑了多远
   function startDrag(event){
     event.stopPropagation();
     event.preventDefault();
     dragingFlag = true;
     mouseStartX = event.pageX;
     mouseStartY = event.pageY;
+    slideLeft = parseInt( document.getElementById('deep').style.left );
     magnifier.addEventListener('mousemove', draging, false);
     magnifier.addEventListener('mouseup', endDrag, false);
   }
@@ -68,15 +70,19 @@ define(function(){
       ctx.clearRect(0, 0, magnifierWidth, magnifierWidth);
       ctx.arc(halfMagnifierWidth, halfMagnifierWidth, halfMagnifierWidth, 0, 2*Math.PI, false);
       ctx.clip();
+      xMove = x - slideLeft;  //如果改变了游标尺
+      xMove = (xMove + halfMagnifierWidth) * ratio - halfMagnifierWidth;
       x = (x + halfMagnifierWidth) * ratio - halfMagnifierWidth;
       y = (y + halfMagnifierWidth) * ratio - halfMagnifierWidth;
-      for(var i = 0; i < imgReadyList.length; i++){
-        imgReadyList[i] && ctx.drawImage(imgReadyList[i], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
-      }
+      imgReadyList[0] && ctx.drawImage(imgReadyList[0], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+      imgReadyList[1] && ctx.drawImage(imgReadyList[1], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+      imgReadyList[2] && ctx.drawImage(imgReadyList[2], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+      imgReadyList[3] && ctx.drawImage(imgReadyList[3], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
     };
   }());
   
   return function(){
+    drawCanvas(lastX, lastY);
     magnifier.addEventListener('mousedown', startDrag, false);
     magnifier.addEventListener('mouseleave', endDrag, false);
   };
