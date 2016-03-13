@@ -11,6 +11,8 @@ define(function () {
 	var lastX = parseInt(magnifier.style.left);
 	var lastY = parseInt(magnifier.style.top);
 	var slideLeft = parseInt(document.getElementById('deep').style.left); //游标尺滑了多远
+  var ratio = 2000 / document.getElementById('main-container').getBoundingClientRect().width; //2000是图片的宽度@todo
+  var slideMultiRatio = slideLeft*ratio;
 	function startDrag(event) {
 		event.stopPropagation();
 		event.preventDefault();
@@ -18,6 +20,7 @@ define(function () {
 		mouseStartX = event.pageX;
 		mouseStartY = event.pageY;
 		slideLeft = parseInt(document.getElementById('deep').style.left);
+    slideMultiRatio = slideLeft*ratio;
 		magnifier.addEventListener('mousemove', draging, false);
 		magnifier.addEventListener('mouseup', endDrag, false);
 	}
@@ -65,15 +68,13 @@ define(function () {
 		img4.onload = imgReadyListChange(4, img4);
 		var ctx = canvas.getContext('2d');
 		var halfMagnifierWidth = magnifierWidth / 2;
-		var ratio = img1.width / document.getElementById('main-container').getBoundingClientRect().width;
 		return function (x, y) {
 			ctx.clearRect(0, 0, magnifierWidth, magnifierWidth);
 			ctx.arc(halfMagnifierWidth, halfMagnifierWidth, halfMagnifierWidth, 0, 2 * Math.PI, false);
 			ctx.clip();
-			var xMove = x - slideLeft; //如果改变了游标尺
-			xMove = Math.round( (xMove + halfMagnifierWidth) * ratio - halfMagnifierWidth );
 			x = Math.round( (x + halfMagnifierWidth) * ratio - halfMagnifierWidth );
 			y = Math.round( (y + halfMagnifierWidth) * ratio - halfMagnifierWidth );
+      var xMove = Math.round(x - slideMultiRatio);
 			imgReadyList[0] && ctx.drawImage(imgReadyList[0], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
 			imgReadyList[1] && ctx.drawImage(imgReadyList[1], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
 			imgReadyList[2] && ctx.drawImage(imgReadyList[2], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
