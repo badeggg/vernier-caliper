@@ -4,9 +4,9 @@
 }
 main{
   width: 1200px;
-  height: 600px;
+  height: 400px;
   position: relative;
-  margin: 100px auto 0;
+  margin: 0 auto;
 }
 .layer{
   position: absolute;
@@ -47,4 +47,22 @@ main{
   position: absolute;
   top: 0;
   left: 0;
+}
+#result{
+  width: 80px;
+  height: 40px;
+  background: gold;
+  float: right;
+  border-radius: 20px;
+  margin-right: 100px;
+}
+#result-container::after{
+  display: block;
+  visibility: hidden;
+  clear: both;
+  content: '\20';
+}
+.width-center{
+  width: 1200px;
+  margin: 40px auto 0px;
 }
