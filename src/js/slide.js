@@ -32,7 +32,7 @@ define(function () {
       return function (event) {
         var tmp = event.pageX - mouseStartX + lastX;
         tmp < 0 && (tmp = 0);
-        tmp > 500 && (tmp = 500);
+        tmp > 726 && (tmp = 726);
         if(lastLeft !== tmp){
           lastLeft = tmp;
           dragElements.forEach(function (elem) {

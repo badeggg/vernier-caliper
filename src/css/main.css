@@ -1,6 +1,11 @@
-﻿body{
+﻿@font-face{
+  font-family: Myriad;
+  src: url(../../font/myriad-set-pro_thin.woff);
+}
+body{
   margin: 0;
   overflow-x: hidden;
+  font-family: Myriad;
 }
 main{
   width: 1200px;
@@ -49,12 +54,17 @@ main{
   left: 0;
 }
 #result{
-  width: 80px;
+  width: 114px;
   height: 40px;
-  background: gold;
+  background-color: #5D5D58;
   float: right;
   border-radius: 20px;
-  margin-right: 100px;
+  text-align: center;
+  padding-top: 7px;
+  box-sizing: border-box;
+  color: gold;
+  font-size: 23px;
+  transition: background-color 0.35s;
 }
 #result-container::after{
   display: block;
@@ -65,4 +75,18 @@ main{
 .width-center{
   width: 1200px;
   margin: 40px auto 0px;
+}
+#result>.mm{
+  font-size: 14px;
+}
+#resultModel{
+  margin-right: 100px;
+  float: right;
+  color: #5D5D58;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: gold;
+  text-align: center;
+  cursor: pointer;
 }
