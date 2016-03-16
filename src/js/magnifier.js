@@ -3,7 +3,7 @@
  * 2016.3.7 start
  * 放大镜
  */
-define(function () {
+define(['slide'], function(slide) {
 	var magnifier = document.getElementById('magnifier');
 	var dragingFlag = false;
 	var mouseStartX = 0;
@@ -42,6 +42,12 @@ define(function () {
 		magnifier.removeEventListener('mouseup', endDrag, false);
 	}
 
+	slide.slideEventTarget.addEventListener('slide', function(event){
+    slideLeft = parseInt(document.getElementById('deep').style.left);
+    slideMultiRatio = slideLeft*ratio;
+		drawCanvas(lastX, lastY);
+	}, false);
+	
 	var magnifierWidth = 150; //放大镜的大小，canvas的大小，唯一的值，不再变化
 	var canvas = document.getElementById('canvas');
 	canvas.setAttribute('width', magnifierWidth);
@@ -80,8 +86,7 @@ define(function () {
 			imgReadyList[2] && ctx.drawImage(imgReadyList[2], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
 			imgReadyList[3] && ctx.drawImage(imgReadyList[3], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
 		};
-	}
-		());
+	}());
 
 	return function () {
 		drawCanvas(lastX, lastY);

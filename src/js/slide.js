@@ -12,8 +12,6 @@ define(function () {
 		dragElements.push(document.getElementById('vernier1'));
 		triggerDragElement.addEventListener('mousedown', startDrag, false);
 		triggerDragElement.addEventListener('mouseleave', endDrag, false);
-    
-    slide.slideEventTarget = document.createElement('div'); //其他模块可利用此属性绑定事件
 
 		var mouseStartX = 0;
 		var lastX = 0;
@@ -53,5 +51,6 @@ define(function () {
 			triggerDragElement.removeEventListener('mouseup', endDrag, false);
 		}
 	};
+	slide.slideEventTarget = document.createElement('div'); //其他模块可利用此属性绑定事件
 	return slide;
 });
