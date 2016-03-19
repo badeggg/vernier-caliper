@@ -4,7 +4,7 @@
  * 开始
  */
 require(['slide', 'magnifier', 'result'], function (slide, magnifier, result) {
-	slide();
-	magnifier();
+  slide();
+  magnifier();
   result();
 });
