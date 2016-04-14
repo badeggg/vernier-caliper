@@ -74,10 +74,10 @@ define(['slide'], function(slide) {
     img4.onload = imgReadyListChange(4, img4);
     var ctx = canvas.getContext('2d');
     var halfMagnifierWidth = magnifierWidth / 2;
+    ctx.arc(halfMagnifierWidth, halfMagnifierWidth, halfMagnifierWidth, 0, 2 * Math.PI, false);
+    ctx.clip();
     return function (x, y) {
       ctx.clearRect(0, 0, magnifierWidth, magnifierWidth);
-      ctx.arc(halfMagnifierWidth, halfMagnifierWidth, halfMagnifierWidth, 0, 2 * Math.PI, false);
-      ctx.clip();
       x = Math.round( (x + halfMagnifierWidth) * ratio - halfMagnifierWidth );
       y = Math.round( (y + halfMagnifierWidth) * ratio - halfMagnifierWidth );
       var xMove = Math.round(x - slideMultiRatio);

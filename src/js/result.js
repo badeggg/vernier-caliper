@@ -46,6 +46,5 @@ define(['slide'], function(slide){
       }
     }, false);
   };
-  result.love = '侯牧云';
   return result;
 });
