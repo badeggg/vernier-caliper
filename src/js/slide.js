@@ -21,7 +21,7 @@ define(function () {
       event.preventDefault();
       dragingFlag = true;
       mouseStartX = event.pageX;
-      triggerDragElement.style.cursor = '-webkit-grabbing';
+      triggerDragElement.style.cursor = 'url(src/img/hand4.png), ew-resize';
       document.addEventListener('mousemove', draging, false);
       document.addEventListener('mouseup', endDrag, false);
     }
@@ -46,7 +46,7 @@ define(function () {
       }
       dragingFlag = false;
       lastX = parseInt(dragElements[0].style.left);
-      triggerDragElement.style.cursor = '-webkit-grab';
+      triggerDragElement.style.cursor = 'url(src/img/hand3.png), ew-resize';
       document.removeEventListener('mousemove', draging, false);
       document.removeEventListener('mouseup', endDrag, false);
     }

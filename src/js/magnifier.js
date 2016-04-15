@@ -23,6 +23,7 @@ define(['slide'], function(slide) {
     slideMultiRatio = slideLeft*ratio;
     document.addEventListener('mousemove', draging, false);
     document.addEventListener('mouseup', endDrag, false);
+    magnifier.style.cursor = "url('src/img/hand2.png'), move";
   }
   function draging(event) {
     var tmpX = event.pageX - mouseStartX + lastX;
@@ -40,6 +41,7 @@ define(['slide'], function(slide) {
     lastY = parseInt(magnifier.style.top);
     document.removeEventListener('mousemove', draging, false);
     document.removeEventListener('mouseup', endDrag, false);
+    magnifier.style.cursor = "url('src/img/hand1.png'), move";
   }
 
   slide.slideEventTarget.addEventListener('slide', function(event){
@@ -68,28 +70,32 @@ define(['slide'], function(slide) {
       img.style.display = 'none';
       imgReadyList[n - 1] = img;
     }
-    img1.onload = imgReadyListChange(1, img1);
-    img2.onload = imgReadyListChange(2, img2);
-    img3.onload = imgReadyListChange(3, img3);
-    img4.onload = imgReadyListChange(4, img4);
     var ctx = canvas.getContext('2d');
     var halfMagnifierWidth = magnifierWidth / 2;
     ctx.arc(halfMagnifierWidth, halfMagnifierWidth, halfMagnifierWidth, 0, 2 * Math.PI, false);
     ctx.clip();
-    return function (x, y) {
+    img1.onload = imgReadyListChange(1, img1);
+    img2.onload = imgReadyListChange(2, img2);
+    img3.onload = imgReadyListChange(3, img3);
+    img4.onload = imgReadyListChange(4, img4);
+    function ret(x, y) {
       ctx.clearRect(0, 0, magnifierWidth, magnifierWidth);
       x = Math.round( (x + halfMagnifierWidth) * ratio - halfMagnifierWidth );
       y = Math.round( (y + halfMagnifierWidth) * ratio - halfMagnifierWidth );
       var xMove = Math.round(x - slideMultiRatio);
-      imgReadyList[0] && ctx.drawImage(imgReadyList[0], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
-      imgReadyList[1] && ctx.drawImage(imgReadyList[1], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
-      imgReadyList[2] && ctx.drawImage(imgReadyList[2], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
-      imgReadyList[3] && ctx.drawImage(imgReadyList[3], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
-    };
+      if(imgReadyList[0] && imgReadyList[1] && imgReadyList[2] && imgReadyList[3]){
+        ctx.drawImage(imgReadyList[0], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+        ctx.drawImage(imgReadyList[1], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+        ctx.drawImage(imgReadyList[2], x, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+        ctx.drawImage(imgReadyList[3], xMove, y, magnifierWidth, magnifierWidth, 0, 0, magnifierWidth, magnifierWidth);
+      }
+    }
+    return ret;
   }());
 
   return function () {
     drawCanvas(lastX, lastY);
+    setTimeout(drawCanvas, 500, lastX, lastY);
     magnifier.addEventListener('mousedown', startDrag, false);
     document.addEventListener('mouseleave', endDrag, false);
   };

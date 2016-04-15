@@ -23,7 +23,7 @@ main{
 }
 #vernier1{
   background-image: url('../../src/img/vernier1.png');
-  cursor: -webkit-grab;
+  cursor: url('../../src/img/hand3.png'), ew-resize;
 }
 #main{
   background-image: url('../../src/img/main.png');
@@ -41,7 +41,7 @@ main{
   width: 150px;
   height: 150px;
   box-shadow: 0 0 13px 16px #828C82 inset;
-  cursor: pointer;
+  cursor: url('../../src/img/hand1.png'), move;
   z-index: 10;
   background: white;
 }
