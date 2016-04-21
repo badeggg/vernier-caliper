@@ -43,7 +43,7 @@ main{
   box-shadow: 0 0 13px 16px #828C82 inset;
   cursor: url('../../src/img/hand1.png'), move;
   z-index: 10;
-  background: white;
+  background-color: white;
 }
 #canvas{
   display: block;
@@ -86,7 +86,65 @@ main{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: gold;
+  background-color: gold;
   text-align: center;
   cursor: pointer;
+}
+
+#teach{
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 500px;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: -5px 1px 16px grey;
+  background-color: #F4F4F7;
+  overflow: scroll;
+}
+#teach-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid gold;
+  cursor: pointer;
+  background-color: gold;
+  transition: background-color 0.35s;
+  position: fixed;
+  
+  /******动画变化的值*****/
+  /*background-color: #F4F4F7;*/
+  /*******************/
+}
+#teach-button>hr{
+  border: none;
+  height: 3px;
+  width: 65%;
+  background-color: #6B5C0B;
+  margin: 6px auto;
+}
+#teach-button>hr:first-child{
+  margin-top: 14px;
+  transition: transform 0.35s;
+  transform-origin: 50% 50%;
+ 
+  /******动画变化的值*****/
+  /*transform: translate(0,10px) rotateZ(45deg) scaleX(1.2);*/
+  /*******************/
+}
+#teach-button>hr:nth-child(2){
+  transition: background-color 0.25s;
+  
+  /******动画变化的值*****/
+  /*background-color: rgba(255, 215, 0, 0);*/
+  /*******************/
+}
+#teach-button>hr:last-child{
+  transition: transform 0.35s;
+  transform-origin: 50% 50%;
+  
+  /******动画变化的值*****/
+  /*transform: translate(0,-8px) rotateZ(-45deg) scaleX(1.2);*/
+  /*******************/
 }
