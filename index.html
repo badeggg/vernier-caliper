@@ -2,12 +2,18 @@
 <html>
 <head>
   <meta charset = 'urf-8'>
+  
   <link href = 'build/css/vernier-caliper.min.css' rel = 'stylesheet'>
+  
+<!--   <link href = 'F:\github\vernier-caliper\src\css\main.css' rel = 'stylesheet'>
+ -->  
 </head>
 <body>
   <div id = 'result-container' class = 'width-center'>
-    <div id = 'resultModel' title = '隐藏结果'></div>
-    <div id = 'result'><span class = 'num'>0.0</span><span class = 'mm'> mm</span></div>
+    <div>
+      <div id = 'resultModel' title = '隐藏结果'></div>
+      <div id = 'result'><span class = 'num'>0.0</span><span class = 'mm'> mm</span></div>
+    </div>
   </div>
   <main id = 'main-container'>
     <div id = 'deep' class = 'layer' style = 'left: 0px;'></div>
@@ -19,10 +25,10 @@
       <canvas id = 'canvas'></canvas>
     </div>
   </main>
+  <div id = 'teach-button'>
+    <hr><hr><hr>
+  </div>
   <aside id = 'teach'>
-    <div id = 'teach-button'>
-      <hr><hr><hr>
-    </div>
   </aside>
   <script src = 'lib/require.js'></script>
   <script src = 'build/js/vernier-caliper.min.js'></script>

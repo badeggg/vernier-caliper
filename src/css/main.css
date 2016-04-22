@@ -101,50 +101,79 @@ main{
   box-sizing: border-box;
   box-shadow: -5px 1px 16px grey;
   background-color: #F4F4F7;
-  overflow: scroll;
+  overflow-y: scroll;
+  transition: right 0.35s, box-shadow 0.35s 0.2s;
+  
+  /******动画变化的值*****/
+  /*right: -500px;*/
+  /*box-shadow: none;*/
+  /*******************/
 }
 #teach-button{
   width: 40px;
   height: 40px;
+  box-sizing: border-box;
   border-radius: 50%;
-  border: 1px solid gold;
+  border: 3px solid gold;
   cursor: pointer;
-  background-color: gold;
-  transition: background-color 0.35s;
+  transition: right 0.35s, background-color 0.35s 0.45s, transform 0.12s;
   position: fixed;
+  top: 2px;
+  right: 480px;
+  z-index: 10;
+  background-color: #F4F4F7;
   
   /******动画变化的值*****/
-  /*background-color: #F4F4F7;*/
+  /*background-color: gold;*/
+  /*right: 2px;*/
   /*******************/
+}
+#teach-button:hover{
+  transform: scale(1.1);
 }
 #teach-button>hr{
   border: none;
   height: 3px;
-  width: 65%;
+  width: 55%;
   background-color: #6B5C0B;
-  margin: 6px auto;
+  margin: 4px auto;
 }
 #teach-button>hr:first-child{
-  margin-top: 14px;
-  transition: transform 0.35s;
+  margin-top: 9px;
+  transition: transform 0.35s 0.45s;
   transform-origin: 50% 50%;
+  transform: translate(0,7px) rotateZ(45deg) scaleX(1.5);
  
   /******动画变化的值*****/
-  /*transform: translate(0,10px) rotateZ(45deg) scaleX(1.2);*/
+  /*transform: none;*/
   /*******************/
 }
 #teach-button>hr:nth-child(2){
-  transition: background-color 0.25s;
+  transition: background-color 0.25s 0.45s;
+  background-color: rgba(255, 215, 0, 0);
   
   /******动画变化的值*****/
-  /*background-color: rgba(255, 215, 0, 0);*/
+  /*background-color: #6B5C0B;*/
   /*******************/
 }
 #teach-button>hr:last-child{
-  transition: transform 0.35s;
+  transition: transform 0.35s 0.45s;
   transform-origin: 50% 50%;
+  transform: translate(0,-7px) rotateZ(-45deg) scaleX(1.5);
   
   /******动画变化的值*****/
-  /*transform: translate(0,-8px) rotateZ(-45deg) scaleX(1.2);*/
+  /*transform: none;*/
+  /*******************/
+}
+blockquote {
+  margin: 1em 1em 1em 2em;
+}
+#result-container>div{
+  transition: transform 0.35s;
+  float: right;
+  transform: translateX(-400px);
+  
+  /******动画变化的值*****/
+  /*transform: none;*/
   /*******************/
 }
