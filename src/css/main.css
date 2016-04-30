@@ -80,7 +80,6 @@ main{
   font-size: 14px;
 }
 #resultModel{
-  margin-right: 100px;
   float: right;
   color: #5D5D58;
   width: 20px;
@@ -103,6 +102,7 @@ main{
   background-color: #F4F4F7;
   overflow-y: scroll;
   transition: right 0.35s, box-shadow 0.35s 0.2s;
+  z-index: 20;
   
   /******动画变化的值*****/
   /*right: -500px;*/
@@ -120,7 +120,7 @@ main{
   position: fixed;
   top: 2px;
   right: 480px;
-  z-index: 10;
+  z-index: 30;
   background-color: #F4F4F7;
   
   /******动画变化的值*****/
@@ -169,11 +169,24 @@ blockquote {
   margin: 1em 1em 1em 2em;
 }
 #result-container>div{
-  transition: transform 0.35s;
+  margin-right: 100px;
+  transition: right 0.35s;
   float: right;
-  transform: translateX(-400px);
+  right: 400px;
+  position: relative;
   
   /******动画变化的值*****/
   /*transform: none;*/
   /*******************/
+}
+
+.do-not-magnify{
+  position: relative;
+  z-index: 20;
+  box-shadow: rgb(93, 93, 88) 0px 0px 8px;
+}
+#measure{
+  position: fixed;
+  right: 600px;
+  left
 }

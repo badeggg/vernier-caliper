@@ -24,7 +24,7 @@ define(function(){
         hr2AnimationStyle = 'background-color: #6B5C0B;',
         hr3AnimationStyle = 'transform: none;',
         teachAnimationStyle = 'right: -500px; box-shadow: none;';
-        resultConAnimationStyle = 'transform: none;';
+        resultConAnimationStyle = 'right: 0;';
     
     var buttonElem = document.getElementById('teach-button'),
         hrElems = buttonElem.querySelectorAll('hr'),
@@ -35,7 +35,7 @@ define(function(){
         resultConElem = document.querySelector('#result-container>div');
     
     buttonElem.addEventListener('click', function(){
-      var flag = 'out';
+      var flag = 'out'; //表示此刻的状态
       return function(){
         if(flag === 'out'){
           buttonElem.setAttribute('style', buttonAnimationStyle);
