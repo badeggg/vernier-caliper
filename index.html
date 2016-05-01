@@ -24,6 +24,7 @@
       <img src = 'src/img/magnifier.png' id = 'magnifier-image'>
       <canvas id = 'canvas'></canvas>
     </div>
+    <div id = 'measure-box'></div>
   </main>
   <div id = 'teach-button'>
     <hr><hr><hr>
@@ -32,10 +33,19 @@
   </aside>
   <div id = 'measure'>
     <div>
-      <div><img src = 'src/img/To_measure_120.png'></div>
-      <div>
-      
+      <div stuffCon><img src = 'src/img/To_measure_120.png' width = '72px' draggable = 'true' id = 'measure120'></div>
+      <div stuffCon><img src = 'src/img/To_measure_123.png' width = '74px' draggable = 'true' id = 'measure123'></div>
+      <div stuffCon><img src = 'src/img/To_measure_111.png' width = '67px' draggable = 'true' id = 'measure111'></div>
+      <div answer-con = '120'>
+        <span >←</span><span>→</span><span answer = '120'>12.0</span>
       </div>
+      <div answer-con = '123'>
+        <span >←</span><span>→</span><span answer = '123'>12.3</span>
+      </div>
+      <div answer-con = '111'>
+        <span >←</span><span>→</span><span answer = '111'>11.1</span>
+      </div>
+      <div table></div>
     </div>
   </div>
   <script src = 'lib/require.js'></script>

@@ -14,8 +14,8 @@
           baseUrl: 'src/js',
           name: './start',
           out: 'build/js/<%= pkg.name %>.min.js',
-          // optimize: 'none'
-          optimize: 'uglify'
+          optimize: 'none'
+          //optimize: 'uglify'
         }
       }
     },
