@@ -189,8 +189,7 @@ blockquote {
   position: relative;
   margin: 0 auto;
   width: 1200px;
-  margin-top: -50px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 #measure>div{
   float: right;
@@ -223,15 +222,15 @@ blockquote {
 }
 #measure>div>div[stuffCon]:nth-child(1){
   width: 72px;
-  height: 76px;
+  height: 72px;
 }
 #measure>div>div[stuffCon]:nth-child(2){
   width: 74px;
-  height: 90px;
+  height: 86px;
 }
 #measure>div>div[stuffCon]:nth-child(3){
   width: 67px;
-  height: 71px;
+  height: 67px;
 }
 #measure>div>div[answer-con]{
   position: absolute;
@@ -260,19 +259,19 @@ blockquote {
   background-color: #5D5D58;
 }
 #measure>div>div[answer-con = '120']{
-  left: 57px;
+  left: 56px;
   top: 77px;
-  width: 72px;
-}
-#measure>div>div[answer-con = '123']{
-  left: 174px;
-  top: 76px;
   width: 74px;
 }
-#measure>div>div[answer-con = '111']{
-  left: 293px;
+#measure>div>div[answer-con = '123']{
+  left: 173px;
   top: 76px;
-  width: 67px;
+  width: 76px;
+}
+#measure>div>div[answer-con = '112']{
+  left: 292px;
+  top: 76px;
+  width: 69px;
 }
 #result-container{
   padding-bottom: 50px;
@@ -284,7 +283,6 @@ blockquote {
   position: absolute;
   left: 81px;
   top: 261px;
-  border: 1px solid #403E34;
   width: 100px;
   height: 100px;
   box-sizing: border-box;
@@ -296,4 +294,8 @@ blockquote {
   bottom: 0;
   margin: auto;
 }
+#measure123, #measure120, #measure112{
+  cursor: move;
+}
+
 

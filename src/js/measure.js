@@ -4,20 +4,31 @@
  * 开始
  */
 //火狐太他妈的变态，所有元素都是droppable的，而且drop了之后，会新打开一个标签搜索你drag的元素（以dataTransfer.setData为关键词），如果是图片直接打开图片
-define(function(){
+//html5的drag&drop好变态啊，还没有搞清楚它是怎么设计的，有时间再看一下
+define(['slide'], function(slide){
   var measure = function(){
     measure.setDragSystem();
   };
+  measure.db = {
+    stuffAtMeasureId: '',
+    answerOfStuffAtMeasure: 0
+  };
+  window.db = measure.db;/////////////////////////////
   measure.setDragSystem = function(){
+    var dndStyleChange = {
+      stuffConElemToAccept: 'outline: 1px dashed black;',
+      measureBoxElemToAccept: 'outline: 1px dashed black'
+    };
+    
     var stuffConElems = {};
     stuffConElems.measure120 = document.querySelector('#measure>div>div[stuffCon]:nth-child(1)');
     stuffConElems.measure123 = document.querySelector('#measure>div>div[stuffCon]:nth-child(2)');
-    stuffConElems.measure111 = document.querySelector('#measure>div>div[stuffCon]:nth-child(3)');
+    stuffConElems.measure112 = document.querySelector('#measure>div>div[stuffCon]:nth-child(3)');
     
     var stuffElems = {};
     stuffElems.measure120 = document.getElementById('measure120');
     stuffElems.measure123 = document.getElementById('measure123');
-    stuffElems.measure111 = document.getElementById('measure111');
+    stuffElems.measure112 = document.getElementById('measure112');
     
     var measureBoxElem = document.getElementById('measure-box');
     
@@ -29,7 +40,14 @@ define(function(){
         }
       }, false);
       elem.addEventListener('drop', function(event){
-        append( elem, stuffElems[event.dataTransfer.getData('text')] );
+        var stuffName = event.dataTransfer.getData('text');
+        //如果不是在拖动那几个“零件”
+        if( !stuffElems[stuffName] ){
+          return;
+        }
+        
+        (name === stuffName) && append( elem, stuffElems[stuffName] );
+        elem.style = '';
       }, false);
     });
     
@@ -39,17 +57,45 @@ define(function(){
       }
     }, false);
     measureBoxElem.addEventListener('drop', function(event){
+      var stuffName = event.dataTransfer.getData('text');
+      //如果不是在拖动那几个“零件”
+      if( !stuffElems[stuffName] ){
+        return;
+      }
+      
       if(this.children.length > 0){
         append( stuffConElems[ this.children[0].id ], this.children[0] );
       }
-      append( this, stuffElems[event.dataTransfer.getData('text')] );
+      append( this, stuffElems[stuffName] );
+      measureBoxElem.style = '';
+      measure.db.answerOfStuffAtMeasure = parseInt( stuffName.slice(-3) );
     }, false);
     
     Object.keys(stuffElems).forEach(function(name){
       var elem = stuffElems[name];
       elem.addEventListener('dragstart', function(event){
         event.dataTransfer.setData('text', name);
+        slide.setSize('>=140');
+        if(name === measure.db.stuffAtMeasureId){
+          stuffConElems[name].style = dndStyleChange.stuffConElemToAccept;
+        }else{
+          measureBoxElem.style = dndStyleChange.measureBoxElemToAccept;
+        }
       });
+      elem.addEventListener('dragend', function(event){
+        if( measureBoxElem.children[0] ){
+          measure.db.stuffAtMeasureId = measureBoxElem.children[0].id;
+          slide.setMinSize( Math.round( parseInt(measureBoxElem.children[0].id.slice(-3)) * 0.6 ) );
+        } else{
+          measure.db.stuffAtMeasureId = '';
+          slide.setMinSize(0);
+        }
+        if(name === measure.db.stuffAtMeasureId){
+          stuffConElems[name].style = '';
+        }else{
+          measureBoxElem.style = '';
+        }
+      }, false);
     });
     
     //你麻痹火狐，不让火狐重新打开标签
