@@ -75,7 +75,7 @@ define(['slide', 'magnifier'], function(slide, magnifier){
       var elem = stuffElems[name];
       elem.addEventListener('dragstart', function(event){
         event.dataTransfer.setData('text', name);
-        slide.setSize('>=130');
+        slide.setSize('>=101');
         if(name === measure.db.stuffAtMeasureId){
           stuffConElems[name].style = dndStyleChange.stuffConElemToAccept;
         }else{
