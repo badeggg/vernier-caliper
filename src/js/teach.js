@@ -23,8 +23,9 @@ define(function(){
         hr1AnimationStyle = 'transform: none;',
         hr2AnimationStyle = 'background-color: #6B5C0B;',
         hr3AnimationStyle = 'transform: none;',
-        teachAnimationStyle = 'right: -500px; box-shadow: none;';
-        resultConAnimationStyle = 'right: 0;';
+        teachAnimationStyle = 'right: -500px; box-shadow: none;',
+        resultConAnimationStyle = 'right: 0;',
+        measureTableAnimationStyle = 'right: 50px;';
     
     var buttonElem = document.getElementById('teach-button'),
         hrElems = buttonElem.querySelectorAll('hr'),
@@ -32,7 +33,8 @@ define(function(){
         hr2Elem = hrElems[1],
         hr3Elem = hrElems[2],
         teachElem = document.getElementById('teach'),
-        resultConElem = document.querySelector('#result-container>div');
+        resultConElem = document.querySelector('#result-container>div'),
+        measureTableElem = document.querySelector('#measure>div');
     
     buttonElem.addEventListener('click', function(){
       var flag = 'out'; //表示此刻的状态
@@ -44,6 +46,7 @@ define(function(){
           hr3Elem.setAttribute('style', hr3AnimationStyle);
           teachElem.setAttribute('style', teachAnimationStyle);
           resultConElem.setAttribute('style', resultConAnimationStyle);
+          measureTableElem.setAttribute('style', measureTableAnimationStyle);
           flag = 'in';
         } else{
           buttonElem.setAttribute('style', '');
@@ -52,6 +55,7 @@ define(function(){
           hr3Elem.setAttribute('style', '');
           teachElem.setAttribute('style', '');
           resultConElem.setAttribute('style', '');
+          measureTableElem.setAttribute('style', '');
           flag = 'out';
         }
       };

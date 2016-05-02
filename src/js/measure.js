@@ -5,7 +5,7 @@
  */
 //火狐太他妈的变态，所有元素都是droppable的，而且drop了之后，会新打开一个标签搜索你drag的元素（以dataTransfer.setData为关键词），如果是图片直接打开图片
 //html5的drag&drop好变态啊，还没有搞清楚它是怎么设计的，有时间再看一下
-define(['slide'], function(slide){
+define(['slide', 'magnifier'], function(slide, magnifier){
   var measure = function(){
     measure.setDragSystem();
   };
@@ -17,7 +17,7 @@ define(['slide'], function(slide){
   measure.setDragSystem = function(){
     var dndStyleChange = {
       stuffConElemToAccept: 'outline: 1px dashed black;',
-      measureBoxElemToAccept: 'outline: 1px dashed black'
+      measureBoxElemToAccept: 'outline: 1px dashed black;'
     };
     
     var stuffConElems = {};
@@ -75,7 +75,7 @@ define(['slide'], function(slide){
       var elem = stuffElems[name];
       elem.addEventListener('dragstart', function(event){
         event.dataTransfer.setData('text', name);
-        slide.setSize('>=140');
+        slide.setSize('>=130');
         if(name === measure.db.stuffAtMeasureId){
           stuffConElems[name].style = dndStyleChange.stuffConElemToAccept;
         }else{
@@ -85,9 +85,11 @@ define(['slide'], function(slide){
       elem.addEventListener('dragend', function(event){
         if( measureBoxElem.children[0] ){
           measure.db.stuffAtMeasureId = measureBoxElem.children[0].id;
+          magnifier.setMeasureStuff( measureBoxElem.children[0].id );
           slide.setMinSize( Math.round( parseInt(measureBoxElem.children[0].id.slice(-3)) * 0.6 ) );
         } else{
           measure.db.stuffAtMeasureId = '';
+          magnifier.setMeasureStuff('');
           slide.setMinSize(0);
         }
         if(name === measure.db.stuffAtMeasureId){
