@@ -258,7 +258,7 @@ blockquote {
   transition: background-color 0.25s;
   cursor: pointer;
 }
-#measure>div>div[answer-con]>span[answer]:hover{
+#measure>div>div[answer-con]>span[answer][show='true']:hover{
   background-color: #5D5D58;
 }
 #measure>div>div[answer-con = '120']{
