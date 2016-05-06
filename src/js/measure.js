@@ -13,7 +13,6 @@ define(['slide', 'magnifier'], function(slide, magnifier){
     stuffAtMeasureId: '',
     answerOfStuffAtMeasure: 0
   };
-  window.db = measure.db;/////////////////////////////
   measure.setDragSystem = function(){
     var dndStyleChange = {
       stuffConElemToAccept: 'outline: 1px dashed black;',
