@@ -1,0 +1,7 @@
+基于互联网，HTML5是如今web页面展示新的正在发展中的标准。Google, Apple, Mozilla等科技公司参与了HTML5标准的制定并各自在其浏览器（Chrome, Safari, Firefox）中支持HTML5标准。如今几乎任何一个现代浏览器都有对HTML5标准的良好支持—IE9,8,7等微软的低版本浏览器除外。
+HTML5是一种标记语言，用来在web上把要展示的内容结构化并由浏览器解析展示。HTML5是现行HTML标准的第五个版本。它由W3C组织（World Wide Web Consortium）在2014年10月发布，目的是在保持易读性和易解析性的特点的基础上提升HTML对多媒体的支持。
+HTML5不仅要替代HTML4，还要替代XHTML1和DOM Level 2 HTML。HTML4在1997年成为W3C建议的web标记语言实现标准，但是在以HTML4为标准时，HTML4并没有为建立富交互的、多媒体的web应用提供足够且必要的信息承载，更重要的是，HTML4有杂乱的内容部署和实现。标准更严格的XHTML1以及为HTML和XHTML定义了Javascript 接口的DOM Level 2 HTML也同样存在这样的问题。HTML5将代替这些标准。
+为了鼓励更加丰富的交互实现，HTML5提供了详细的处理模型，同时HTML5提高了文档标签的可用性和合理性并为复杂的web应用引入了新标签和接口。出于同样的原因，HTML5也是跨平台的移动应用的候选，因为它有着为低功耗设备如手机和平板电脑设计的特征。
+HTML5引入了许多新的标签。为了能够让浏览器原生处理多媒体和图形图像内容，它增加了<video>,<audio>,<canvas>等新标签并支持矢量图形（svg）内容，同时为数学表达式提供了数学标签语言（MathML）。为了语义化文档内容，HTML5新增了文档结构化标签元素，如：<main>, <section>, <article>, <header>, <footer>, <aside>, <nav>, <figure>。HTML5引入了一些新的属性，移除了一些标签和属性，重新定义或者标准化了一些标签，如：<a>, <cite>, <menu>。
+值得注意的是，HTML5并不是专指HTML标签，它更包括与标记语言对应的程序接口和DOM（Document Object Model）结构。这些API以及DOM是HTML5标准的基础。HTML5也为不规范的文档的处理提供了更好的定义。
+HTML5的出现和不断完善发展使得我们可以把具有富交互特点的教学课件直接放在web页面上。学习者只需要一个现代的浏览器联网即可使用课件进行学习。HTML5可以让学习者的学习更方便。 
